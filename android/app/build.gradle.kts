@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ndase_app"
+    namespace = "com.ndase.ndase_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,8 +20,8 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.ndase_app"
+        // Application ID updated to unique identifier
+        applicationId = "com.ndase.ndase_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -32,9 +32,14 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Using debug signing config for development
+            // For production, create a proper keystore and configure signing
             signingConfig = signingConfigs.getByName("debug")
+            minifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
